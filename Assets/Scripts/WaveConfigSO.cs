@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Wave Config", fileName = "New Wave Config")]
+[CreateAssetMenu(menuName = "Wave Config", fileName = "Wave ")]
 public class WaveConfigSO : ScriptableObject
 {
     [SerializeField] Transform pathPrefab;
@@ -21,7 +21,7 @@ public class WaveConfigSO : ScriptableObject
         }
         return waypoints;
     }
-    public float getMoveSpeed()
+    public float GetMoveSpeed()
     {
         return moveSpeed;
     }
