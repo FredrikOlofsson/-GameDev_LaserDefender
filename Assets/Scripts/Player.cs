@@ -70,6 +70,10 @@ public class Player : MonoBehaviour
         transform.position = clampedPos;
     }
 
+    private void OnDrowning()
+    {
+        print("I am drowning!");
+    }
     private void OnMove(InputValue value)
     {
         rawInput = value.Get<Vector2>();
