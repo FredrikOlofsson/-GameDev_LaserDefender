@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3337720014504288418}
   - component: {fileID: 3253488526263710376}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ufoRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1194256963
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cedee53a50d84074ab04ab09a3b6e3cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1867092407322984207}
   - component: {fileID: -5985165550214809655}
   - component: {fileID: -278283895814698733}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
