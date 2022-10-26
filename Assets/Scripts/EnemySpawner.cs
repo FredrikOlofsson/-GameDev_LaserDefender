@@ -20,7 +20,6 @@ public class EnemySpawner : MonoBehaviour
     }
     IEnumerator SpawnEnemyWaves()
     {
-
         do
         {
             foreach (WaveConfigSO wave in waves)

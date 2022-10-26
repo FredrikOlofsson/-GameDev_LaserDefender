@@ -24,8 +24,6 @@ public class Pathfinder : MonoBehaviour
 
     void Update()
     {
-        
-        print("Current waypoint index: " + waypointIndex + " waypoints.Count : " + waypoints.Count);
         FollowPath();
     }
 
