@@ -356,7 +356,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bc98cdd6a924cf2479943ff2705dd6f5, type: 2}
   - {fileID: 11400000, guid: 6738a746e47dc08458288b8a8d444466, type: 2}
   timeBetweenWaves: 0
-  isLooping: 0
+  isLooping: 1
 --- !u!4 &1241402893
 Transform:
   m_ObjectHideFlags: 0
@@ -379,10 +379,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 263793007, guid: 103e49982a347974e9523e09d7d89841, type: 3}
-      propertyPath: paddingBottom
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2169534840196825934, guid: 103e49982a347974e9523e09d7d89841, type: 3}
       propertyPath: m_RootOrder
       value: 2

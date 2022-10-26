@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5707848585419361076}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7005731917976342850}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &3253488526263710376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -212,5 +212,8 @@ MonoBehaviour:
   projectPrefab: {fileID: 3672014431641235858, guid: cfdd0eae2a52e5142b8c772c2919f26a, type: 3}
   projectileSpeed: 10
   projectileLifetime: 5
-  projectileFireRate: 0.2
+  projectileBaseFireRate: 1
+  projectileFireRateVariance: 0.2
+  projectileMinSpawntime: 0.3
+  useAI: 1
   isFireing: 0
