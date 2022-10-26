@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  explosionEffect: {fileID: 4324127390553195380, guid: e63c8f95e4c78e84bbe3b03171578ff5, type: 3}
 --- !u!114 &-278283895814698733
 MonoBehaviour:
   m_ObjectHideFlags: 0
