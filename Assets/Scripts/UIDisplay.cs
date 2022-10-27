@@ -36,7 +36,7 @@ public class UIDisplay : MonoBehaviour
     void Update()
     {
         healthSlider.value = health.GetHealth();
-        scoreText.text = scoreKeeper.GetScore().ToString("000000000000000000000000");
+        scoreText.text = scoreKeeper.GetScore().ToString("0000");
     }
 
 }

@@ -10,7 +10,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] GameObject projectPrefab;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileLifetime = 5f;
-    [SerializeField] float projectileBaseFireRate = 0.2f;
+    [SerializeField] public float projectileBaseFireRatePerSec = 5f;
 
     [Header("AI")]
     [SerializeField] float projectileFireRateVariance = 0.2f;
@@ -20,6 +20,7 @@ public class Shooter : MonoBehaviour
     AudioPlayer audioPlayer;
     Coroutine fireCoroutine;
     public bool isFireing;
+    private float lastShot;
 
     void Awake()
     {
@@ -41,6 +42,7 @@ public class Shooter : MonoBehaviour
 
     private void Fire()
     {
+        /*
         if (isFireing && fireCoroutine == null)
         {
             fireCoroutine = StartCoroutine(FireContinously());
@@ -48,10 +50,23 @@ public class Shooter : MonoBehaviour
         {
             StopCoroutine(fireCoroutine);
             fireCoroutine = null;
+        }*/
+        if (isFireing == true && lastShot < Time.time)
+        {
+            lastShot = Time.time + (1/projectileBaseFireRatePerSec);
+            Shoot();
         }
     }
 
+    private void Shoot()
+    {
+        GameObject instance = Instantiate(projectPrefab, transform.position, Quaternion.identity);
+        Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
+        rb.velocity = transform.up * projectileSpeed;
 
+        audioPlayer.PlayShootingClip();
+    }
+    
     IEnumerator FireContinously()
     {
         while (true)
@@ -64,9 +79,9 @@ public class Shooter : MonoBehaviour
             }
             Destroy(instance, projectileLifetime);
 
-            float timeToNextProjectile = Random.Range(projectileBaseFireRate - projectileFireRateVariance,
-                                                    projectileBaseFireRate + projectileFireRateVariance);
-            timeToNextProjectile = math.clamp(timeToNextProjectile, projectileMinSpawntime, projectileBaseFireRate + projectileFireRateVariance);
+            float timeToNextProjectile = Random.Range(projectileBaseFireRatePerSec - projectileFireRateVariance,
+                                                    projectileBaseFireRatePerSec + projectileFireRateVariance);
+            timeToNextProjectile = math.clamp(timeToNextProjectile, projectileMinSpawntime, projectileBaseFireRatePerSec + projectileFireRateVariance);
 
             audioPlayer.PlayShootingClip();
             yield return new WaitForSeconds(timeToNextProjectile);

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -29,6 +28,7 @@ public class EnemySpawner : MonoBehaviour
                 for (int i = 0; i < amountOfEnemies; i++)
                 {
                     GameObject enemy = currentWave.GetEnemyPrefab(i);
+                    enemy.GetComponent<Shooter>().projectileBaseFireRatePerSec = Random.Range(1f, 2f);
                     Instantiate(enemy, currentWave.getStartingWayPoint().position, Quaternion.Euler(0, 0, 180), transform);
                     yield return new WaitForSeconds(currentWave.GetRandomSpawnTime());
                 }

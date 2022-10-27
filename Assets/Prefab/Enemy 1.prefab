@@ -183,8 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6890830144aaab14891e626d07fec0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   health: 50
+  score: 50
   explosionEffect: {fileID: 4324127390553195380, guid: e63c8f95e4c78e84bbe3b03171578ff5, type: 3}
+  shouldShake: 0
 --- !u!114 &8514081704876914039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +216,7 @@ MonoBehaviour:
   projectPrefab: {fileID: 3672014431641235858, guid: cfdd0eae2a52e5142b8c772c2919f26a, type: 3}
   projectileSpeed: 10
   projectileLifetime: 5
-  projectileBaseFireRate: 1
+  projectileBaseFireRatePerSec: 0.44
   projectileFireRateVariance: 0.2
   projectileMinSpawntime: 0.3
   useAI: 1
