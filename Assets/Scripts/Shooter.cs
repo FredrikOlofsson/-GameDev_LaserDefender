@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Shooter : MonoBehaviour
 {
-    [Header ("General")]
+    [Header("General")]
     [SerializeField] GameObject projectPrefab;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileLifetime = 5f;
@@ -17,9 +17,15 @@ public class Shooter : MonoBehaviour
     [SerializeField] float projectileMinSpawntime = 0.1f;
     [SerializeField] bool useAI;
 
+    AudioPlayer audioPlayer;
+    Coroutine fireCoroutine;
     public bool isFireing;
 
-    Coroutine fireCoroutine;
+    void Awake()
+    {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+    }
+
     void Start()
     {
         if (useAI == true)
@@ -44,7 +50,7 @@ public class Shooter : MonoBehaviour
             fireCoroutine = null;
         }
     }
- 
+
 
     IEnumerator FireContinously()
     {
@@ -56,11 +62,13 @@ public class Shooter : MonoBehaviour
             {
                 rb.velocity = transform.up * projectileSpeed;
             }
+            Destroy(instance, projectileLifetime);
 
             float timeToNextProjectile = Random.Range(projectileBaseFireRate - projectileFireRateVariance,
                                                     projectileBaseFireRate + projectileFireRateVariance);
-            math.clamp(timeToNextProjectile, projectileMinSpawntime, projectileBaseFireRate + projectileFireRateVariance);
-            Destroy(instance, projectileLifetime);
+            timeToNextProjectile = math.clamp(timeToNextProjectile, projectileMinSpawntime, projectileBaseFireRate + projectileFireRateVariance);
+
+            audioPlayer.PlayShootingClip();
             yield return new WaitForSeconds(timeToNextProjectile);
         }
     }
