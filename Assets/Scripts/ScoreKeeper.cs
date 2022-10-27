@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreKeeper : MonoBehaviour
+public static class ScoreKeeper
 {
-	private int score;
+	private static int score;
 
-	public int GetScore()
+	public static int GetScore()
 	{
 		return score;
 	}
-	public void AddScore(int value)
+	public static void AddScore(int value)
 	{
 		score += value;
 		Mathf.Clamp(score, 0, int.MaxValue);
 	}
-	public void ResetScore()
+	public static void ResetScore()
 	{
 		score = 0;
 	}

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class Health : MonoBehaviour
     CameraShake camShake;
     AudioPlayer audioPlayer;
     ScoreKeeper scoreKeeper;
+    LevelManager levelManager;
     public int GetHealth()
     {
         return health;
@@ -23,6 +26,8 @@ public class Health : MonoBehaviour
         camShake = Camera.main.GetComponent<CameraShake>();
         audioPlayer = FindObjectOfType<AudioPlayer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        levelManager = FindObjectOfType<LevelManager>();
+        
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,9 +45,9 @@ public class Health : MonoBehaviour
     {
         health -= damage;
         ShakeCamera();
-        if (health <= 0) Die();
+        if (health <= 0) StartCoroutine(Die());
     }
-    private void Die()
+    IEnumerator Die()
     {
         if (isPlayer == false)
         {
@@ -50,12 +55,18 @@ public class Health : MonoBehaviour
         }
         if (isPlayer == true)
         {
-            camShake.shakeDuration *= 2;
-            camShake.shakeMagnitude *= 2;
+            float violentShakeDuration = camShake.shakeDuration * 2;
+            float violentMagnitude = camShake.shakeDuration * 2;
+            camShake.shakeDuration = violentShakeDuration;
+            camShake.shakeMagnitude = violentMagnitude;
             ShakeCamera();
+
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
+            yield return new WaitForSeconds(violentShakeDuration);
+            Destroy(gameObject);            
+            SceneManager.LoadScene("GameOver");
         }
         Destroy(gameObject);
-
     }
     private void PlayExplosion()
     {
