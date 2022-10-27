@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour
 {
     public void LoadGame()
     {
+        ScoreKeeper.ResetScore();
         SceneManager.LoadScene("Level_1");
     }
     public void LoadMainMenu()

@@ -15,7 +15,6 @@ public class Health : MonoBehaviour
     [SerializeField] bool shouldShake;
     CameraShake camShake;
     AudioPlayer audioPlayer;
-    ScoreKeeper scoreKeeper;
     LevelManager levelManager;
     public int GetHealth()
     {
@@ -25,7 +24,6 @@ public class Health : MonoBehaviour
     {
         camShake = Camera.main.GetComponent<CameraShake>();
         audioPlayer = FindObjectOfType<AudioPlayer>();
-        scoreKeeper = FindObjectOfType<ScoreKeeper>();
         levelManager = FindObjectOfType<LevelManager>();
         
     }
@@ -51,7 +49,7 @@ public class Health : MonoBehaviour
     {
         if (isPlayer == false)
         {
-            scoreKeeper.AddScore(score);
+            ScoreKeeper.AddScore(score);
         }
         if (isPlayer == true)
         {

@@ -11,7 +11,6 @@ public class UIDisplay : MonoBehaviour
     [SerializeField] Health health;
     [Header("Score")]
     [SerializeField] TextMeshProUGUI scoreText;
-    ScoreKeeper scoreKeeper;
 
     void Awake()
     {
@@ -20,11 +19,7 @@ public class UIDisplay : MonoBehaviour
             health = FindObjectOfType<Health>();
             Debug.Log("Forgot to add object in " + gameObject.name + " inspector, automaticly adding one from : " + health.name);
         }
-        if (scoreKeeper == null)
-        {
-            scoreKeeper = FindObjectOfType<ScoreKeeper>();
-            Debug.Log("Forgot to add object in " + gameObject.name + " inspector, automaticly adding one from : " + scoreKeeper.name);
-        }
+
         healthSlider = GetComponentInChildren<Slider>();
         scoreText = GetComponentInChildren<TextMeshProUGUI>();
     }
@@ -36,7 +31,7 @@ public class UIDisplay : MonoBehaviour
     void Update()
     {
         healthSlider.value = health.GetHealth();
-        scoreText.text = scoreKeeper.GetScore().ToString("0000");
+        scoreText.text = ScoreKeeper.GetScore().ToString("0000");
     }
 
 }
